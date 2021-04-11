@@ -1,0 +1,49 @@
+@import "index.less";
+.app{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  .main{
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+  }
+  .my-sider{
+    width: 160px;
+    height: 100%;
+    box-shadow: 1px 0 1px @theme-color;
+    overflow: auto;
+    box-sizing: border-box;
+    &::-webkit-scrollbar{
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb{
+      border-radius: 4px;
+      background: @theme-color;
+    }
+  }
+  .header{
+    @font-size: 20px;
+    width: 100%;
+    height: @header-height;
+    line-height: @header-height;
+    font-size: @font-size;
+    background: @theme-color;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .my-content{
+    flex: 1;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    &::-webkit-scrollbar{
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb{
+      border-radius: 4px;
+      background: @theme-color;
+    }
+  }
+}
