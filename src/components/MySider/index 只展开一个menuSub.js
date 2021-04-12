@@ -12,6 +12,15 @@ import "./index.less"
 
 const { SubMenu } = Menu;
 const navs = navList()
+const rootKeys = getRootKeys()
+
+function getRootKeys() {
+    const arr = navs.filter(nav => {
+        return nav.name
+    })
+    return arr
+}
+
 function getRouteFromHash() {
     const path = window.location.hash.slice(2)
     const pathArr = path.split('-')
@@ -44,6 +53,7 @@ class MySider extends Component {
     }
 
     onOpenChange = (keyArr) => {
+        console.log(keyArr)
         const openKey = keyArr[keyArr.length - 1]
         this.setState({openKeys: [openKey]})
     }
@@ -54,7 +64,7 @@ class MySider extends Component {
 
 
     render() {
-        console.log('render sider')
+        // console.log('render sider')
         const { defaultSelectedKeys, defaultOpenKeys, openKeys, collapsed } = this.state
         return (
             <div className='my-sider' style={collapsed ? { width: 80 } : {}}>
@@ -114,6 +124,29 @@ class MySider extends Component {
                     '那我改变一下导航栏的默认选中的key。嘿，居然不发生改变，那我改变Menu的key，你就必须要重新渲染了吧！')
             })
         })
+        /*// 浏览器刷新前记录path
+        window.addEventListener("beforeunload", event => {
+            const path = window.location.hash.slice(2)
+            const pathArr = path.split('-')
+            let defaultSelectedKey = ''
+            let defaultOpenKey = ''
+            if(pathArr.length>1) {
+                defaultSelectedKey = pathArr.reduce((sum, item) => {
+                    return sum  + '-' + item
+                },'')
+                defaultSelectedKey = defaultSelectedKey.slice(1)
+                defaultOpenKey = pathArr[0]
+            } else {
+                defaultOpenKey = pathArr[0]
+                defaultSelectedKey = pathArr[0]
+            }
+            const pathDetails = {
+                defaultOpenKey,
+                defaultSelectedKey
+            }
+            localStorage.setItem('path',qs.stringify(pathDetails))
+        })
+        console.log(this.state.defaultOpenKeys.toString())*/
     }
 }
 export default withRouter(MySider)
