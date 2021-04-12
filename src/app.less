@@ -4,12 +4,14 @@
   flex-direction: column;
   height: 100vh;
   .main{
+    @font-size: 30px;
     flex: 1;
     overflow: hidden;
     display: flex;
+    font-size: @font-size;
   }
   .my-sider{
-    width: 160px;
+    width: 260px;
     height: 100%;
     box-shadow: 1px 0 1px @theme-color;
     overflow: auto;
@@ -23,7 +25,8 @@
     }
   }
   .header{
-    @font-size: 20px;
+    @font-size: 40px;
+    @header-height: 80px;
     width: 100%;
     height: @header-height;
     line-height: @header-height;

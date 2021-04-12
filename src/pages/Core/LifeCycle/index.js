@@ -70,8 +70,6 @@ class Middle extends Component {
         this.state = {
             count: 1
         }
-        console.log('constructor')
-        console.log(props)
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -86,7 +84,7 @@ class Middle extends Component {
         return null
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate(nextProps, nextState,nextContext) {
         console.log('shouldComponentUpdate')
         return true
     }
@@ -185,12 +183,33 @@ export default class LifeCycle extends Component {
         */
         this.setState(state => ({count: state.count + 1}))
     }
+    clickUpdateComponent = () => {
+        this.forceUpdate(() => {
+            /*
+                更新完调用这个回调
+                不会执行shouldComponentUpdate钩子，直接调用render(),但会调用其他所有更新时会调用的钩子只是不调用shouldComponentUpdate
+                会更新子组件
+            */
+            console.log('强制更新')
+        })
+    }
+
+    static getDerivedStateFromProps (state, props) {
+        console.log('执行了getDerivedStateFromProps')
+        return null
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log('执行了！')
+        return true
+    }
 
     render() {
         return (
             <div className='my-content'>
                 <h3>{this.state.count}</h3>
                 <Button onClick={this.clickBtn}>Parent</Button>
+                <Button onClick={this.clickUpdateComponent}>forceUpdate</Button>
                 <Middle style={{'margin-top': '20px'}} data={this.state.count}></Middle>
             </div>
         );

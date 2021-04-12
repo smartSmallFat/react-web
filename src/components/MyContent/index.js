@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { navList } from "../../common/router";
 
 const routes = []
@@ -25,6 +25,7 @@ export default class MyContent extends Component {
                         )
                     })
                 }
+                <Redirect to='/home'/>
             </Switch>
         );
     }

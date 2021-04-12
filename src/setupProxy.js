@@ -2,7 +2,7 @@ const proxy = require('http-proxy-middleware')
 module.exports = function (app) {
     app.use(
         proxy('/api', {
-            target: 'http://xxxxx.com',
+            target: 'http://pu.gthzz.com',
             changeOrigin: true,
             // pathRewrite: {
             //     '^/api': ''

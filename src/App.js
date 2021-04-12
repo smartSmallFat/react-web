@@ -16,18 +16,6 @@ class App extends Component {
             </div>
         )
     }
-
-    /*render() {
-        return (
-            <div className='app'>
-                <MyHeader></MyHeader>
-                <section className='main'>
-                    <MySider></MySider>
-                    <MyContent></MyContent>
-                </section>
-            </div>
-        );
-    }*/
 }
 
 export default App;

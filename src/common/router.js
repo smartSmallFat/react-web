@@ -4,6 +4,8 @@ import LifeCycle from "../pages/Core/LifeCycle";
 import Context from "../pages/Avanced/Context";
 import ErrorBoundaries from "../pages/Avanced/ErrorBoundaries"
 import Home from "../pages/Home";
+import AxiosTest from "../pages/AxiosTest";
+
 import {
     HomeOutlined,
     SettingFilled
@@ -16,6 +18,13 @@ const routes = [
         title: '首页',
         icon: <HomeOutlined />,
         component: Home
+    },
+    {
+        to: '/axios',
+        name: 'axios',
+        title: 'axios',
+        icon: <HomeOutlined />,
+        component: AxiosTest
     },
     {
         to: '/core',
